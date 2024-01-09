@@ -1,0 +1,17 @@
+[
+    {
+      "username": "user1",
+      "email": "user1@example.com",
+      "password": "password1"
+      // Add other user fields as needed
+    },
+    {
+      "name": "Product 1",
+      "description": "Description for Product 1",
+      "price": 19.99,
+      "quantityInStock": 50
+      // Add other product fields as needed
+    },
+    // ... other sample data
+  ]
+  
