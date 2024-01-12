@@ -10,11 +10,12 @@ const path = require('path');
 const { typeDefs, resolvers } = require('./graphql');
 
 // Connect to MongoDB
-mongoose.connect('your-mongodb-url', {
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/EcomProj', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useCreateIndex: true,
 });
+
 
 const db = mongoose.connection;
 

@@ -1,36 +1,38 @@
-const { User, Product, Order } = require('../models');
+const Order = require('../models/OrderModel');
+const Product = require('../models/ProductModel');
 
 const resolvers = {
   Query: {
-    user: async (_, { _id }) => {
-      return User.findById(_id);
-    },
-    products: async () => {
-      return Product.find({});
-    },
-    orders: async (_, { user_id }) => {
-      return Order.find({ 'user._id': user_id });
-    },
+    // You can add any necessary queries for orders here
   },
   Mutation: {
-    createUser: async (_, { username, email, password }) => {
-      const user = await User.create({ username, email, password });
-      return user;
-    },
-    createProduct: async (_, { name, description, price, quantityInStock }) => {
-      const product = await Product.create({ name, description, price, quantityInStock });
-      return product;
-    },
-    createOrder: async (_, { user_id, products }) => {
-      // Logic to create an order
-      // - Validate products and user_id
-      // - Calculate total based on product prices and quantities
-      // - Create an order record in the database
-      // - Update product quantities in stock
-      // - Return the created order
-      // This logic will depend on your specific requirements
+    createOrder: async (_, { orderInput }) => {
+      try {
+        // Create a new order with the provided orderInput
+        const newOrder = new Order({
+          products: orderInput.products,
+          totalPrice: orderInput.totalPrice,
+        });
+
+        // Save the new order to the database
+        await newOrder.save();
+
+        // Decrease the quantity in stock for each product in the order
+        for (const product of orderInput.products) {
+          await Product.findByIdAndUpdate(product.productId, {
+            $inc: { quantityInStock: -product.quantity },
+          });
+        }
+
+        // Return the newly created order
+        return newOrder;
+      } catch (err) {
+        // If an error occurs during the database operation, throw an error
+        throw new Error(err);
+      }
     },
   },
 };
 
+// Export the resolver object
 module.exports = resolvers;

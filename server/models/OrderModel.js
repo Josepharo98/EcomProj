@@ -1,17 +1,15 @@
 const mongoose = require('mongoose');
 
 const productOrderSchema = new mongoose.Schema({
-  product: { type: mongoose.Schema.Types.ObjectId, ref: 'Product', required: true },
+  productId: { type: mongoose.Schema.Types.ObjectId, required: true },
   quantity: { type: Number, required: true },
+  productName: { type: String, required: true },
+  price: { type: Number, required: true },
 });
 
 const orderSchema = new mongoose.Schema({
-  user: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
   products: [productOrderSchema],
-  total: { type: Number, required: true },
-  status: { type: String, required: true },
-  createdAt: { type: Date, default: Date.now },
-  // Add other fields as needed
+  totalPrice: { type: Number, required: true },
 });
 
 const Order = mongoose.model('Order', orderSchema);

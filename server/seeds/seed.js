@@ -1,7 +1,7 @@
 const db = require('../config/connection');
 const { User, Product } = require('../models');
-const cleanDB = require('./seed/cleanDB');
-const seedData = require('./seed/seedData.json');
+const cleanDB = require('./cleanDB');
+const seedData = require('./seedData.json');
 
 db.once('open', async () => {
   try {
