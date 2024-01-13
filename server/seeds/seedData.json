@@ -3,15 +3,34 @@
       "username": "user1",
       "email": "user1@example.com",
       "password": "password1"
-      // Add other user fields as needed
     },
     {
-      "name": "Product 1",
-      "description": "Description for Product 1",
+      "id":"1",
+      "name": "Hoodie",
+      "description": "This is our handmade hoodie.",
       "price": 19.99,
-      "quantityInStock": 50
-      // Add other product fields as needed
+      "quantityInStock": 65
     },
-    // ... other sample data
+    {
+      "id":"2",
+      "name": "Pants",
+      "description": "This is our handmade pants.",
+      "price": 14.99,
+      "quantityInStock": 198
+     
+    },{
+      "id":"3",
+      "name": "Jacket",
+      "description": "This is our handmade jacket.",
+      "price": 24.99,
+      "quantityInStock": 76
+      
+    },{
+      "id":"4",
+      "name": "Socks",
+      "description": "This is our handmade socks.",
+      "price": 9.99,
+      "quantityInStock": 89
+    }
   ]
   

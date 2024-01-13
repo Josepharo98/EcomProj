@@ -15,7 +15,6 @@ const typeDefs = gql`
     description: String
     price: Float!
     quantityInStock: Int!
-    # Add other product-related fields as needed
   }
 
   type Order {

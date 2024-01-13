@@ -1,4 +1,3 @@
-// /components/ShoppingCart.jsx
 import React from 'react';
 
 const ShoppingCart = ({ cartItems, removeFromCart }) => {
@@ -6,9 +5,9 @@ const ShoppingCart = ({ cartItems, removeFromCart }) => {
     <div>
       <h2>Shopping Cart</h2>
       {cartItems.map((item) => (
-        <div key={item.productId}>
-          <p>{item.productName} - Quantity: {item.quantity} - Price: ${item.price}</p>
-          <button onClick={() => removeFromCart(item.productId)}>Remove from Cart</button>
+        <div key={item.id}>
+          <p>{item.name} - Quantity: {item.quantity} - Price: ${item.price}</p>
+          <button onClick={() => removeFromCart(item.id)}>Remove from Cart</button>
           <hr />
         </div>
       ))}
