@@ -1,28 +1,27 @@
 // server.js
 
 const express = require('express');
-const { ApolloServer } = require('@apollo/server-express');
-const { expressMiddleware } = require('@apollo/server-express4');
+const { ApolloServer } = require('@apollo/server');
+const { expressMiddleware } = require('@apollo/server/express4');
 const mongoose = require('mongoose');
 const path = require('path');
+const {authMiddleware} = require("./utils/auth")
 
 // Import GraphQL schema and resolvers
-const { typeDefs, resolvers } = require('./graphql');
+const { typeDefs, resolvers } = require('./schemas');
 
 // Connect to MongoDB
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/EcomProj', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-  useCreateIndex: true,
-});
+// mongoose.connect(process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/EcomProj', {
+//   useNewUrlParser: true,
+//   useUnifiedTopology: true,
+//   useCreateIndex: true,
+// });
 
 
-const db = mongoose.connection;
+const db = require('./config/connection')
 
-db.on('error', console.error.bind(console, 'MongoDB connection error:'));
-db.once('open', () => {
-  console.log('Connected to MongoDB database');
-});
+//db.on('error', console.error.bind(console, 'MongoDB connection error:'));
+
 
 const app = express();
 
@@ -38,7 +37,7 @@ const startApolloServer = async () => {
 
   app.use(express.urlencoded({ extended: true }));
   app.use(express.json());
-  app.use('/graphql', expressMiddleware(server));
+  app.use('/graphql', expressMiddleware(server, {context:authMiddleware}));
 
   if (process.env.NODE_ENV === 'production') {
     app.use(express.static(path.join(__dirname, '../client/build')));
@@ -47,11 +46,14 @@ const startApolloServer = async () => {
       res.sendFile(path.join(__dirname, '../client/build/index.html'));
     });
   }
-
-  app.listen(PORT, () => {
-    console.log(`API server running on port ${PORT}!`);
-    console.log(`Use GraphQL at http://localhost:${PORT}/graphql`);
+  db.once('open', () => {
+    console.log('Connected to MongoDB database');
+    app.listen(PORT, () => {
+      console.log(`API server running on port ${PORT}!`);
+      console.log(`Use GraphQL at http://localhost:${PORT}/graphql`);
+    });
   });
+ 
 };
 
 startApolloServer();

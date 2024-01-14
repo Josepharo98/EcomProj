@@ -1,9 +1,17 @@
 const Order = require('../models/OrderModel');
 const Product = require('../models/ProductModel');
+const User = require('../models/UserModel')
+const {signToken, AuthenticationError} = require('../utils/auth')
 
 const resolvers = {
   Query: {
     // You can add any necessary queries for orders here
+    user: async(_,__,context) => {if (context.user){
+      return User.findOne({_id:context.user._id})
+    }
+    throw AuthenticationError
+  }
+   
   },
   Mutation: {
     createOrder: async (_, { orderInput }) => {
