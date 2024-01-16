@@ -15,7 +15,7 @@ module.exports = async (modelName, collectionName) => {
   }
 };
 
-server\schemas\typeDefs.js:
+
 const typeDefs = `
   type User {
     _id: ID!
