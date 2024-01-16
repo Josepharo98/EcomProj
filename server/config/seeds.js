@@ -124,6 +124,46 @@ db.once('open', async () => {
       image: 'alphabet-blocks.jpg',
       price: 9.99,
       quantity: 600
+    },
+    {
+      name: 'Leather Wallet',
+      category: categories[0]._id,
+      description: 'Stylish leather wallet for men.',
+      image: 'leather-wallet.jpg',
+      price: 29.99,
+      quantity: 50
+    },
+    {
+      name: 'Sunflower Dress',
+      category: categories[1]._id,
+      description: 'Bright and floral dress for women.',
+      image: 'sunflower-dress.jpg',
+      price: 19.99,
+      quantity: 75
+    },
+    {
+      name: 'Smartwatch',
+      category: categories[2]._id,
+      description: 'Stay connected with our latest smartwatch.',
+      image: 'smartwatch.jpg',
+      price: 149.99,
+      quantity: 25
+    },
+    {
+      name: 'Educational Toys Set',
+      category: categories[3]._id,
+      description: 'Engage your kids with fun and educational toys.',
+      image: 'educational-toys.jpg',
+      price: 29.99,
+      quantity: 100
+    },
+    {
+      name: 'Gardening Kit',
+      category: categories[4]._id,
+      description: 'Start your gardening journey with our kit.',
+      image: 'gardening-kit.jpg',
+      price: 39.99,
+      quantity: 40
     }
   ]);
 
