@@ -1,58 +1,57 @@
-
-
 const typeDefs = `
-  type User {
-    _id: ID!
-    username: String!
-    email: String!
-    # Add other user-related fields as needed
+  type Category {
+    _id: ID
+    name: String
   }
 
   type Product {
-    _id: ID!
-    name: String!
+    _id: ID
+    name: String
     description: String
-    price: Float!
-    quantityInStock: Int!
+    image: String
+    quantity: Int
+    price: Float
+    category: Category
   }
 
   type Order {
-    _id: ID!
-    user: User!
-    products: [ProductOrder]!
-    total: Float!
-    status: String!
-    createdAt: String!
-    # Add other order-related fields as needed
+    _id: ID
+    purchaseDate: String
+    products: [Product]
   }
 
-  type ProductOrder {
-    product: Product!
-    quantity: Int!
+  type User {
+    _id: ID
+    firstName: String
+    lastName: String
+    email: String
+    orders: [Order]
+  }
+
+  type Checkout {
+    session: ID
   }
 
   type Auth {
-    token: ID!
+    token: ID
     user: User
   }
+
   type Query {
-    user : User
-    # products: [Product]
-    # orders(user_id: ID!): [Order]
-    # Add other queries as needed
+    categories: [Category]
+    products(category: ID, name: String): [Product]
+    product(_id: ID!): Product
+    user: User
+    order(_id: ID!): Order
+    checkout(products: [ID]!): Checkout
   }
 
   type Mutation {
-   # createUser(username: String!, email: String!, password: String!): Auth
-    # createProduct(name: String!, description: String, price: Float!, quantityInStock: Int!): Product
-    createOrder(user_id: ID!, products: [ProductOrderInput]!): Order
-    # Add other mutations as needed
-    
-  }
-
-  input ProductOrderInput {
-    product_id: ID!
-    quantity: Int!
+    addUser(firstName: String!, lastName: String!, email: String!, password: String!): Auth
+    addOrder(products: [ID]!): Order
+    updateUser(firstName: String, lastName: String, email: String, password: String): User
+    updateProduct(_id: ID!, quantity: Int!): Product
+    login(email: String!, password: String!): Auth
   }
 `;
 

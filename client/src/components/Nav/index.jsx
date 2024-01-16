@@ -1,28 +1,56 @@
-import { Link } from 'react-router-dom';
-import { capitalizeFirstLetter } from '../../utils/helpers';
+import Auth from "../../utils/auth";
+import { Link } from "react-router-dom";
 
-function Nav({ currentPage }) {
-  const pages = ['portfolio', 'contact', 'resume'];
+function Nav() {
+
+  function showNavigation() {
+    if (Auth.loggedIn()) {
+      return (
+        <ul className="flex-row">
+          <li className="mx-1">
+            <Link to="/orderHistory">
+              Order History
+            </Link>
+          </li>
+          <li className="mx-1">
+            {/* this is not using the Link component to logout or user and then refresh the application to the start */}
+            <a href="/" onClick={() => Auth.logout()}>
+              Logout
+            </a>
+          </li>
+        </ul>
+      );
+    } else {
+      return (
+        <ul className="flex-row">
+          <li className="mx-1">
+            <Link to="/signup">
+              Signup
+            </Link>
+          </li>
+          <li className="mx-1">
+            <Link to="/login">
+              Login
+            </Link>
+          </li>
+        </ul>
+      );
+    }
+  }
 
   return (
-    <nav>
-      <ul className="flex-row">
-        <li
-          className={`mx-5 ${currentPage === '/' && 'navActive'}`}
-          key="about"
-        >
-          <Link to="/">About</Link>
-        </li>
-        {pages.map((Page) => (
-          <li
-            className={`mx-5 ${currentPage === `/${Page}` && 'navActive'}`}
-            key={Page}
-          >
-            <Link to={`/${Page}`}>{capitalizeFirstLetter(Page)}</Link>
-          </li>
-        ))}
-      </ul>
-    </nav>
+    <header className="flex-row px-1">
+      <h1>
+        <Link to="/">
+          <span role="img" aria-label="shopping bag">🛍️</span>
+          -Shop-Shop
+        </Link>
+      </h1>
+
+      <nav>
+        {showNavigation()}
+      </nav>
+    </header>
   );
 }
 
