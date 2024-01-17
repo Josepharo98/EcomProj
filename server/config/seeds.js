@@ -25,7 +25,7 @@ db.once('open', async () => {
       image: 'Cologne-For-Him.jpg',
       category: categories[0]._id,
       price: 22.99,
-      quantity: 500
+      quantity: 93
     },
     {
       name: '3 for 1',
@@ -34,11 +34,11 @@ db.once('open', async () => {
       image: 'Three-For-One.jpg',
       category: categories[1]._id,
       price: 16.99,
-      quantity: 538
+      quantity: 27
     },
     {
       name: 'Kid Dress',
-      category: categories[1]._id,
+      category: categories[3]._id,
       description:
         'Dress you kids up and enjoy.',
       image: 'Kid-Dress.jpg',
@@ -56,7 +56,7 @@ db.once('open', async () => {
     },
     {
       name: 'Knitted Shirt',
-      category: categories[1]._id,
+      category: categories[0]._id,
       description:
         'Try our hand made shirt.',
       image: 'Knitted-Shirt.jpg',
@@ -91,25 +91,25 @@ db.once('open', async () => {
       quantity: 100
     },
     {
-      name: 'Spinning Top',
-      category: categories[4]._id,
-      description: 'Ut vulputate hendrerit nibh, a placerat elit cursus interdum.',
-      image: 'spinning-top.jpg',
-      price: 1.99,
-      quantity: 1000
+      name: 'Black Button Down',
+      category: categories[1]._id,
+      description: 'Womans black button down.',
+      image: 'black-button-down.jpg',
+      price: 8.99,
+      quantity: 64
     },
     {
-      name: 'Wool Sweater',
-      category: categories[0]._id,
+      name: 'Summer Top',
+      category: categories[1]._id,
       description:
-        'Sed a mauris condimentum, elementum enim in, rhoncus dui. Phasellus lobortis leo odio, sit amet pharetra turpis porta quis.',
-      image: 'plastic-horses.jpg',
-      price: 2.99,
-      quantity: 1000
+        'Womans Summer Top.',
+      image: 'Summer-Top.jpg',
+      price: 9.99,
+      quantity: 87
     },
     {
       name: 'Teddy Bear',
-      category: categories[4]._id,
+      category: categories[3]._id,
       description:
         'For the Kids.',
       image: 'teddy-bear.jpg',
@@ -117,11 +117,11 @@ db.once('open', async () => {
       quantity: 100
     },
     {
-      name: 'Alphabet Blocks',
-      category: categories[4]._id,
+      name: 'Button Down',
+      category: categories[1]._id,
       description:
-        'The Kids would love this.',
-      image: 'alphabet-blocks.jpg',
+        'Women button down shirt.',
+      image: 'button-down.jpg',
       price: 9.99,
       quantity: 600
     },
