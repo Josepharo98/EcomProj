@@ -8,21 +8,21 @@ This is a full-stack MERN (MongoDB, Express.js, React, Node.js) e-commerce appli
 Clone the repository:
 
 git clone https://github.com/your-username/mern-shopping.git
-cd mern-shopping
+cd ECOMPROJ
 install concurrently: npm install --save-dev concurrently
 cd server , run npm i, run npm run seed
 cd client, run npm i, npm run build
-cd to the root directory, run npm 
+cd to the root directory, run npm run develop
 
 
 ## Contributors
 
 
-Contributor 1
+ Joseph Aro
 
-Contributor 2
+Affan Camal
 
-Contributor 3
+Giorgi Jorjadze
 
 
 ## Live Page
@@ -32,4 +32,4 @@ Check out the live version of the app here:
 
 ## License
 
-This project is licensed under the 
+This project is licensed under Mit license 
